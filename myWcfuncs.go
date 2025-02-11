@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"unicode/utf8"
 )
 
 func wc(path string, l, m, w bool, wg *sync.WaitGroup) (int, error) {
@@ -16,7 +17,7 @@ func wc(path string, l, m, w bool, wg *sync.WaitGroup) (int, error) {
 	}
 	defer openfile.Close()
 	scanner := bufio.NewScanner(openfile)
-	var line string
+
 	switch {
 	case l:
 		for scanner.Scan() {
@@ -24,13 +25,15 @@ func wc(path string, l, m, w bool, wg *sync.WaitGroup) (int, error) {
 		}
 	case m:
 		{
+			var line string
 			for scanner.Scan() {
 				line = scanner.Text()
-				count += len(line)
+				count += utf8.RuneCountInString(line)
 			}
 		}
 	case w:
 		{
+			var line string
 			for scanner.Scan() {
 				line = scanner.Text()
 
