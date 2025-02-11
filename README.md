@@ -1,4 +1,4 @@
-# myWs
+# myWc
 
 Now we are able to find our files, but we may need more meta information about what is in these files. Let's implement a `wc`-like utility to collect basic statistics about our files.
 
