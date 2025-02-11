@@ -37,7 +37,7 @@ func main() {
 	for i := 0; i < flag.NArg(); i++ {
 		path = flag.Arg(i)
 		wg.Add(1)
-		count, err := ws(path, l, m, w, &wg)
+		count, err := wc(path, l, m, w, &wg)
 		if err != nil {
 			fmt.Println(err)
 		} else {

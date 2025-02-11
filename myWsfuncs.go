@@ -7,7 +7,7 @@ import (
 	"sync"
 )
 
-func ws(path string, l, m, w bool, wg *sync.WaitGroup) (int, error) {
+func wc(path string, l, m, w bool, wg *sync.WaitGroup) (int, error) {
 	defer wg.Done()
 	var count int
 	openfile, err := os.Open(path)
